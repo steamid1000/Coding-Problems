@@ -48,8 +48,6 @@ void createPalindrome(std::unordered_map<char, int> &occ, std::string &input, st
                 output[input.find(iter.first)] = temp; //^ this will put the current char at the position of the removed charaacter
                 input[input.find(iter.first)] = temp;
 
-                // std::cout << "have inserted the middle odd character\n";
-                // std::cout << output << "\n";
 
                 for (int i = 0; i < input.length() / 2 and iter.second > 0; i++)
                 {
@@ -175,7 +173,7 @@ int main()
     std::cout << checkAndReturnPalindrome("mmaass")<<"\n";
     std::cout << checkAndReturnPalindrome("moka")<<"\n";
     std::cout << checkAndReturnPalindrome("banana")<<"\n";
-    std::cout<<checkAndReturnPalindrome("madamd");
+    std::cout<<checkAndReturnPalindrome("madamd")<<"\n";
     
     
 

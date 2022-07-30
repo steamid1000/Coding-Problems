@@ -11,10 +11,10 @@ Here, the optimal trade is to buy when the price is 5, and sell when it is 10, s
 
 int maxprofit(int arr[], int n)
 {
-    int min=arr[0],max=arr[0]; //will store the min and max
+    int min=INT16_MAX,max=INT16_MIN; //will store the min and max
     int index; //will save the index of the min price, we just have to search ahead of that
     //finding min price
-    for (size_t i = 1; i < n; i++)
+    for (size_t i = 0; i < n; i++)
     {
         if (arr[i]<min)
         {
@@ -35,6 +35,7 @@ int maxprofit(int arr[], int n)
         
     }
     
+    std::cout<<min<<" "<<max<<"\n";
     return max-min;
 
 }
@@ -42,6 +43,7 @@ int main()
 {
     int n = 6;
     int prices[n]{9, 11, 8, 5, 7, 10};
+    // int prices[n]{6, 11, 8, 8, 7, 10};
 
     int max_profit = maxprofit(prices,n);
 
