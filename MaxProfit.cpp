@@ -1,5 +1,4 @@
-/* Hi, here's your problem today. This problem was recently asked by Apple:
-
+/*
 You are given an array. Each element represents the price of a stock on that particular day. Calculate and return the maximum profit you can make from buying and selling that stock only once.
 
 For example: [9, 11, 8, 5, 7, 10]
