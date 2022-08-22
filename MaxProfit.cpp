@@ -8,32 +8,40 @@ Here, the optimal trade is to buy when the price is 5, and sell when it is 10, s
 
 #include <iostream>
 
+
+//& !!!! Error found with a new test case, need to change the appoarch
+
 int maxprofit(int arr[], int n)
 {
-    int min=INT16_MAX,max=INT16_MIN; //will store the min and max
-    int index; //will save the index of the min price, we just have to search ahead of that
+    int min=INT16_MAX,max=INT16_MIN,maxProfit = 0; //will store the min and max
+    int index=0; //will save the index of the min price, we just have to search ahead of that
     //finding min price
-    for (size_t i = 0; i < n; i++)
+
+    for (int i = 0; i < n; i++)
     {
-        if (arr[i]<min)
-        {
-            min = arr[i];
-            index = i;
-        }
         
-    }
-
-
-    //finding the max price
-    for (size_t i = index; i < n; i++)
-    {
-        if (arr[i]>max)
+        for (int j = index; j < n; j++)
         {
-            max = arr[i];
+            if (i==j)
+            {
+                continue;
+            }
+
+            if (j>i and arr[j] - arr[i] > maxProfit)
+            {
+                maxProfit = arr[j] - arr[i];
+                min = arr[i];
+                max = arr[j];
+                index = j;
+            }
+            
+            
+
         }
         
     }
     
+
     std::cout<<min<<" "<<max<<"\n";
     return max-min;
 
@@ -41,9 +49,11 @@ int maxprofit(int arr[], int n)
 int main()
 {
     int n = 6;
-    int prices[n]{9, 11, 8, 5, 7, 10};
-    // int prices[n]{6, 11, 8, 8, 7, 10};
+    int prices[n]{12, 10, 13, 15, 9, 10};
+    //int prices[n]{6, 11, 8, 8, 7, 10};
 
+    //& !!!! Note it is assumed that we can buy the stock and sell it any day after the buying day
+    
     int max_profit = maxprofit(prices,n);
 
     std::cout<<max_profit<<"\n";

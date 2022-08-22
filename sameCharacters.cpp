@@ -13,11 +13,11 @@ print(common_characters(['google', 'facebook', 'youtube']))
 #include <vector>
 
 //& Looking at thier oputput it seems that they have used a ordered map or something like that, we can try that too
-void findCommonCharacters(std::string words[], int size) //^ using the new find function or the inbuil string function can be used to reduce the number of loops
+void findCommonCharacters(std::string words[], int size) //^ using the new find function or the inbuilt string function can be used to reduce the number of loops
 {
     std::vector<char> commonChars;
 
-    for (int i = 0; i < words[0].length(); i++)
+    for (int i = 0; i < words[0].length(); i++) //^ loops through all the strings
     {
         bool commonCharacter = false;
 
@@ -33,7 +33,7 @@ void findCommonCharacters(std::string words[], int size) //^ using the new find 
             }
         }
 
-        if (commonCharacter and util::find(commonChars,words[0][i]) == false)
+        if (commonCharacter and util::find(commonChars,words[0][i]) == false) //^ push the current character only if it doesn't already exists in the commonCharacters stack
         {
             commonChars.push_back(words[0][i]);
         }

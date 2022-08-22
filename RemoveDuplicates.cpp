@@ -18,7 +18,7 @@ print(nums)
 
 int remove_Duplicate(int nums[],int size)
 {
-    int currentElem;
+    
     int m = 0;
     for(int i = 0; i<size-1;i++)if(nums[i+1]<=nums[i]) m++; //^ Calculating the number of duplicates
 
@@ -40,18 +40,19 @@ int remove_Duplicate(int nums[],int size)
         
     }
 
-    std::cout<<m<<"\n";
+    // std::cout<<m<<"\n";
 
     return size - m;
 }
 
 int main()
 {
-    int nums[] = {1, 1, 2, 3, 4, 4, 4, 4, 4, 5, 5, 6, 7,7, 9};
+    int nums[] = {1, 1, 2, 3,3, 4, 4, 4, 4, 4, 5, 5, 6, 7,7, 9,9};
     int size = sizeof(nums)/sizeof(int);
 
-    // std::cout<<remove_Duplicate(nums,size)<<"\n";
-    util::arr_dis(nums,remove_Duplicate(nums,size));
+    int unique_items = remove_Duplicate(nums,size);
+    std::cout<<"Unique Items: "<<unique_items<<'\n';
+    util::arr_dis(nums,unique_items);
 
 
 

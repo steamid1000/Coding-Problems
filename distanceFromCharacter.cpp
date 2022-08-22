@@ -10,23 +10,36 @@
 #include <iostream>
 #include <vector>
 #include "util.h"
-void findAllOccurenceOfACharacter(std::vector<int> &storage, char character, std::string word)
+#include "random";
+
+bool findAllOccurenceOfACharacter(std::vector<int> &storage, char character, std::string word) // ^ 0(n)
 {
-    for (int i = 0; i < word.length(); i++)
+    int characterCount = 0;
+    for (int i = 0; i < word.length(); i++) //^ 0 (n) where n = length of the string
     {
         if (word[i] == character)
         {
             storage.push_back(i);
+            characterCount++;
         }
     }
+
+    if (characterCount==0)
+    {
+        std::cout<<"The entered character is not found in given string\n";
+        return false;
+    }
+
+    return true;
+    
 }
 
-void closestDistanceFromCharacter(std::string word, char character)
-{
+void closestDistanceFromCharacter(std::string word, char character) //^ 0 (n x k) n = number of characters in the string and k = character which are the same as target
+{                                                                  //^ Could be linear time if we use unordered maps
     std::vector<int> characterPos;
     //^ This will save the position of the character we want for comparasion
     //^Calling the Occurence function here
-    findAllOccurenceOfACharacter(characterPos, character, word);
+    if(!findAllOccurenceOfACharacter(characterPos, character, word)) return;
 
     int distances[word.length()];
     for (int i = 0; i < word.length(); i++)
@@ -38,7 +51,7 @@ void closestDistanceFromCharacter(std::string word, char character)
         }
 
         int closest = INT16_MAX;
-        for (int j = 0; j < characterPos.size(); j++)
+        for (int j = 0; j < characterPos.size(); j++) //^ Finds minimum distance from all the copies of the target character
         {
 
             if (i <= characterPos[j])
@@ -68,8 +81,10 @@ void closestDistanceFromCharacter(std::string word, char character)
     util::arr_dis(distances, word.length());
 }
 
+
+
 int main()
 {
-    closestDistanceFromCharacter("helloworld", 'l');
+    closestDistanceFromCharacter("helloworld", 'z');
     return 0;
 }
